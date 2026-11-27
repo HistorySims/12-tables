@@ -18,26 +18,28 @@ body{background:#120c08;color:var(--ink);font-family:Georgia,'Times New Roman',s
 header{background:var(--hud);border-bottom:2px solid var(--ink);padding:6px 7px 7px;flex:0 0 auto;}
 .mast{display:flex;justify-content:space-between;align-items:center;gap:6px;
  border-bottom:1px solid var(--line);padding-bottom:3px;margin-bottom:5px;}
-.mast h1{font-size:9.5px;letter-spacing:2.2px;text-transform:uppercase;color:var(--rust);font-weight:700;}
-.mast span{font-size:8.5px;letter-spacing:1.4px;text-transform:uppercase;color:#4a3b2c;text-align:right;}
+.mast h1{font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:var(--rust);font-weight:700;}
+.mast span{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#4a3b2c;text-align:right;}
 .voices{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:4px;}
 .vc{background:var(--cell);border:1px solid var(--line);padding:2px 1px 3px;text-align:center;}
-.vc .who{font-size:6.8px;font-weight:700;text-transform:uppercase;color:#4a3d2e;display:block;line-height:1.15;}
-.vc .mood{font-size:9px;margin-top:1px;}
-.vc .mood i{font-style:normal;font-size:11px;}
-.vc .mood u{text-decoration:none;font-size:6.8px;text-transform:uppercase;display:block;
+.vc .who{font-size:9.5px;font-weight:700;text-transform:uppercase;color:#4a3d2e;display:block;line-height:1.15;}
+.vc .mood{font-size:10px;margin-top:1px;}
+.vc .mood i{font-style:normal;font-size:13px;}
+.vc .mood u{text-decoration:none;font-size:9px;text-transform:uppercase;display:block;
  font-family:ui-monospace,Menlo,monospace;}
 .meters{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;}
 .mt{background:#e2cda2;border:1px solid var(--line);padding:2px 1px 3px;text-align:center;}
-.mt .who{font-size:6.6px;font-weight:700;text-transform:uppercase;color:var(--rust);display:block;line-height:1.1;}
-.mt .num{font-size:13px;font-weight:700;font-family:ui-monospace,Menlo,monospace;}
-.mt .dl{font-size:7.6px;height:10px;font-family:ui-monospace,Menlo,monospace;color:#8c2f22;}
+.mt .who{font-size:9.5px;font-weight:700;text-transform:uppercase;color:var(--rust);display:block;line-height:1.1;}
+.mt .num{font-size:15px;font-weight:700;font-family:ui-monospace,Menlo,monospace;}
+.mt .dl{font-size:9px;height:12px;font-family:ui-monospace,Menlo,monospace;color:#8c2f22;}
 .mt.up .dl{color:#2f5d34;}
 .mt.warn{background:#e8b9a3;border-color:#8c2f22;}
 #strip{margin-top:5px;border:1px solid var(--line);background:#e9dcbc;}
 #strip svg{display:block;width:100%;height:auto;}
-@media(max-width:430px){.mast h1{font-size:8px;letter-spacing:1.2px;}.mast span{font-size:7.4px;letter-spacing:.9px;}}
-@media(max-width:340px){.mast h1{font-size:7px;letter-spacing:.6px;}.mast span{font-size:6.6px;letter-spacing:.4px;}}
+@media(max-width:430px){.mast h1{font-size:9.5px;letter-spacing:1px;}.mast span{font-size:9px;letter-spacing:.6px;}
+ .vc .who,.mt .who{font-size:9px;letter-spacing:0;}.vc .mood u{font-size:8.5px;}}
+@media(max-width:340px){.mast h1{font-size:9px;letter-spacing:.4px;}.mast span{font-size:9px;letter-spacing:.2px;}
+ .voices,.meters{gap:2px;}.vc .who,.mt .who{font-size:9px;}}
 
 main{flex:0 0 auto;height:216px;background:var(--paper);overflow:hidden;border-bottom:3px solid var(--ink);}
 @media(min-width:520px){main{height:262px;}}
@@ -102,7 +104,7 @@ section{background:var(--panel);padding:9px 11px 12px;flex:1 1 auto;overflow-y:a
  display:flex;gap:5px;justify-content:center;background:#e2d0a8;}
 .wsface{text-align:center;}
 .wsface svg{width:38px;height:38px;border:2px solid var(--ink);background:#f6ecd6;border-radius:50%;}
-.wsface span{display:block;font-size:6.6px;text-transform:uppercase;letter-spacing:.4px;
+.wsface span{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.4px;
  margin-top:2px;color:#4a3d2e;font-family:ui-monospace,Menlo,monospace;}
 
 /* the bronze tablets */
@@ -409,7 +411,7 @@ function drawStrip(){
   for(let i=0;i<5;i++) city+=`<rect x="${309+i*10}" y="26" width="3" height="12" fill="#c9bb9c"/>`;
   const smokes=out?1:5;
   for(let i=0;i<smokes;i++) city+=`<circle class="smk" cx="${248+i*36}" cy="22" r="3" fill="#9a8f80" opacity=".6"/>`;
-  if(out) city+=`<text x="330" y="47" font-size="6.5" text-anchor="middle" fill="#5a3a22" font-family="Georgia">empty streets</text>`;
+  if(out) city+=`<text x="330" y="47" font-size="9" text-anchor="middle" fill="#5a3a22" font-family="Georgia">empty streets</text>`;
   // the enemy: the higher their fear, the closer the fires
   const miles=Math.max(2,Math.round(30-S.FEAR*0.28));
   const ex=640-Math.min(170,S.FEAR*1.8), fires=Math.max(1,Math.round(S.FEAR/14));
@@ -426,11 +428,11 @@ function drawStrip(){
    : `The plebs are in the city. Enemy fires ${miles} miles out.`;
   document.getElementById('strip').innerHTML=`<svg viewBox="0 0 660 66" aria-hidden="true">
    <rect width="660" height="66" fill="#eadfc2"/>
-   <text x="8" y="10" font-size="7" letter-spacing="1.5" fill="#8a2b1d" font-family="Georgia" font-weight="700">THE HILL</text>
-   <text x="330" y="10" font-size="7" letter-spacing="1.5" fill="#8a2b1d" font-family="Georgia" font-weight="700" text-anchor="middle">ROME</text>
-   <text x="652" y="10" font-size="7" letter-spacing="1.5" fill="#8a2b1d" font-family="Georgia" font-weight="700" text-anchor="end">${foeName}</text>
+   <text x="8" y="12" font-size="10" letter-spacing="1.2" fill="#8a2b1d" font-family="Georgia" font-weight="700">THE HILL</text>
+   <text x="330" y="12" font-size="10" letter-spacing="1.2" fill="#8a2b1d" font-family="Georgia" font-weight="700" text-anchor="middle">ROME</text>
+   <text x="652" y="12" font-size="10" letter-spacing="1.2" fill="#8a2b1d" font-family="Georgia" font-weight="700" text-anchor="end">${foeName}</text>
    ${hill}${city}${foe}<line x1="0" y1="50" x2="660" y2="50" stroke="#8a7650" stroke-width="1"/>
-   <text x="330" y="61" font-size="8" text-anchor="middle" fill="#3a2a1a" font-family="Georgia" font-style="italic">${cap}</text></svg>`;
+   <text x="330" y="62" font-size="11" text-anchor="middle" fill="#3a2a1a" font-family="Georgia" font-style="italic">${cap}</text></svg>`;
 }
 
 /* ═══ ART ═══ every scene is drawn from a handful of parts: people, buildings, fire,
@@ -969,7 +971,7 @@ const BEATS=[
 {act:2,scene:'hearth',tag:'A house on the Aventine',who:'The families',drain:1,
  text:"~~In a two-room house on the Aventine, the loom thumps, clack, clack, as a woman beats the thread tight. Her daughter stirs the pot over the hearth. The little clay household gods watch from their shrine on the wall. There is enough emmer left for six days.~~\nMost of the men on the hill left their families behind in the city. The women are holding everything together: the fields, the animals, the debts.\n\nNow there are rumors that the Fathers might use them. They could lock the families up. Or they could simply wait for the wives to beg their husbands to come home.",
  type:'choice',
- record:"Livy does not say what happened to the families during the first secession. Roman stories often give women a deciding role, though. Two years later, he says, it was the mother and wife of the general Coriolanus who walked out to his army and turned it back from Rome. The choices here are imagined in that spirit.",
+ record:"Livy does not say what happened to the families during the first secession. Roman stories often give women a deciding role, though. A few years later, he says, it was the mother and wife of the general Coriolanus who walked out to his army and turned it back from Rome. The choices here are imagined in that spirit.",
  opts:[
   {l:'Bring the families out to the hill.',
    why:['Nobody can be held hostage, and the whole city sees that the plebs are not coming back alone.',
@@ -1080,7 +1082,7 @@ const BEATS=[
 
 /* ───────── ACT III · THE BRONZE ───────── */
 {act:3,scene:'grandfather',tag:'Rome, 462 BC',who:'Thirty-two years later',
- text:"~~Your grandfather's room smells of wool grease, garlic and the herb paste on his bad knee. His hands are huge and spotted. He still sleeps with his old spear beside the bed.~~\nYou are **Gnaeus Sicinius**, grandson of Lucius. You grew up in a Rome that {{GOT_TRIBUNES?has tribunes. You have never known a city without them.|still has no tribunes. The plebs have gone on fighting for them, year after year.}}\n\n{{FABLE_DEFY?*I told Menenius we were not his hands,* your grandfather says. *I would tell him again.*|*Menenius told us a story about a belly,* your grandfather says. *A good story. It took me half my life to see what it left out.*}}\n\n*We never drew a sword, boy. Remember that. Not one Roman killed another.* {{BROKE_CHAINS?He grins. *Well. We broke a door or two.*|}}\n\n*But we never got the one thing that mattered most. You know what it is?*",
+ text:"~~Your grandfather's room smells of wool grease, garlic and the herb paste on his bad knee. His hands are huge and spotted. He still sleeps with his old spear beside the bed.~~\nYou are **Gnaeus Sicinius**, grandson of Lucius. You grew up in a Rome that has tribunes. You have never known a city without them.\n\n{{FABLE_DEFY?*I told Menenius we were not his hands,* your grandfather says. *I would tell him again.*|*Menenius told us a story about a belly,* your grandfather says. *A good story. It took me half my life to see what it left out.*}}\n\n*We never drew a sword, boy. Remember that. Not one Roman killed another.* {{BROKE_CHAINS?He grins. *Well. We broke a door or two.*|}}\n\n*But we never got the one thing that mattered most. You know what it is?*",
  type:'go'},
 {act:3,scene:'forum',tag:'462 – 452 BC',who:'The hidden law',
  text:"*The law,* your grandfather says. *Nobody can read it.*\n\nHe is right. Rome has laws, but they are not written down anywhere a plebeian can see them. They live in the memories of patrician priests and judges. If your neighbor's ox breaks your fence, or a lender says you owe him double, you go to a patrician judge, and he tells you what the law is. That day. However he likes.\n\n~~The priests pass through the Forum in their pointed wool caps. Somewhere in their houses are the lists of court days and the exact words you must say in front of a judge. Say one word wrong and you lose your case, even if you are right.~~\nIn 462 BC a tribune named Terentilius stands up and says it out loud: *Write the laws down. All of them. Put them where anyone can read them.*\n\nThe Fathers fight him for ten years. Then they send three men all the way to Greece to study the laws of Athens. And in 452 BC they offer a deal.",
@@ -1299,10 +1301,13 @@ function deliverDemands(){
 // Run when the Senate's answer arrives: cheapest first, until tolerance runs out.
 function settle(){
   const tol=tolerance(); let used=0; S.grant=[];
-  const ask=S.asked.map(id=>TERMS.find(t=>t.id===id)).sort((a,b)=>a.c-b.c);
+  let ask=S.asked.map(id=>TERMS.find(t=>t.id===id)).sort((a,b)=>a.c-b.c);
+  ask.filter(t=>t.needs).forEach(t=>{ ask=ask.filter(x=>x!==t);
+    ask.splice(ask.findIndex(x=>x.id===t.needs)+1,0,t); });
   ask.forEach(t=>{ if(t.needs&&!S.grant.includes(t.needs)) return;
     if(used+t.c<=tol){ used+=t.c; S.grant.push(t.id); } });
   S.grant.forEach(id=>S.flags['GOT_'+id.toUpperCase()]=true);
+  if(S.asked.includes('tribunes')) S.flags.ASKED_TRIBUNES=true;
   S.used=used; S.tol=tol;
 }
 function dealUI(){
@@ -1474,6 +1479,7 @@ function bindGloss(){
     e.stopPropagation(); const k=el.dataset.k;
     defEl.innerHTML=`<b>${GLOSS_NAME[k]||k}</b><br>${GLOSS[k]||''}`; defEl.style.display='block';});
 }
+let curYear='';
 const skip=b=>(b.need&&!S.flags[b.need])||(b.unless&&S.flags[b.unless]);
 function show(){
   const b=BEATS[bi];
@@ -1486,7 +1492,9 @@ function show(){
   if(S.OUT&&S.GRAIN<=0&&(b.act===2||b.act===4)&&b.type!=='end'){ ending('HUNGER'); return; }
   art.innerHTML=SCENES[b.scene]();
   tagEl.textContent=ROMAN[b.act]+' · '+b.tag;
-  mastEl.textContent='The Annals of the Plebs · '+(b.act===3&&bi>=BEATS.findIndex(x=>x.scene==='bronze0')?'450 BC':YEAR[b.act]);
+  const yrs=(b.tag.match(/\d{3}(?= BC)|\d{3}(?= –)/g)||[]);
+  if(yrs.length) curYear=yrs[0]+' BC'; else if(!curYear) curYear=YEAR[b.act];
+  mastEl.textContent='The Annals of the Plebs · '+curYear;
   whoEl.textContent=b.who;
   const inAct=BEATS.filter(x=>x.act===b.act&&!skip(x));
   statEl.textContent=HERO(b.act)+' · '+(inAct.indexOf(b)+1)+'/'+inAct.length;
@@ -1647,7 +1655,7 @@ function finish(){
     if(S.HILL<40) return ending('ALONE');
     endPaper('THE GOING-APART','The plebs leave the city','**On to Act II.** The army is on the hill. Now you have to keep it there.',NEXT(2));
   } else if(a===2){
-    if(!S.flags.GOT_TRIBUNES&&S.HILL<60) return ending('EMPTY');
+    if(!S.flags.GOT_TRIBUNES) return ending('EMPTY');
     endPaper('THE SACRED MOUNT',S.flags.GOT_TRIBUNES?'The first tribunes of the plebs':'A peace with nobody to keep it',
       '**On to Act III.** Thirty-two years pass. Lucius grows old. The fight passes to his grandson.',NEXT(3));
   } else if(a===3){
@@ -1663,13 +1671,13 @@ const ENDINGS={
  OBEY:{h:'THE THIRD PROMISE',d:'The legions march, and nothing changes',
   n:"The army marches. It wins, as it always does. It comes home, and the lenders are waiting at the gate, as they always are.\n\nThe Fathers learn a lesson from you: the plebs will grumble, but in the end they will keep the oath. It is the most dangerous thing they could have learned.\n\n*What really happened:* the army did not obey. It went to the Sacred Mount, and that is why there were tribunes in Rome for the next nine hundred years."},
  ALONE:{h:'NOBODY CAME',d:'Sicinius walks out alone',
-  n:"You walk out of the gate and up the road to the Anio. Behind you come a few dozen friends. Not an army. Not even a crowd.\n\nThe Senate does not have to negotiate with forty men on a hill. It waits. After a week of rain, the forty go home.\n\nA secession only works if the city really empties. *With you* was too low: not enough of Rome believed you."},
+  n:"You walk out of the gate and up the road to the Anio. Behind you come a few dozen friends. Not an army. Not even a crowd.\n\nThe Senate does not have to negotiate with forty men on a hill. It waits. After a week of rain, the forty go home.\n\nA secession only works if the city really empties. *With you* was too low: not enough of Rome knew you, or trusted you, to follow.{{SECRET? You kept the plans to a few trusted men. That kept them safe, and it meant almost nobody knew a plan existed.|}}{{ASKED_CONSUL? You went to the consul first, and the debtors decided you were asking, not acting.|}} Lucius's caution was reasonable. A secession needs a crowd, though, and a crowd has to be built before the day you need it."},
  HUNGER:{h:'EMPTY BOWLS',d:'The hill runs out of grain',
   n:"The last of the emmer is gone. Men start slipping back down the hill at night, one by one, then whole families together, carrying their pots.\n\nThe Fathers do not have to give anything. They only have to wait one day longer than you can.\n\nEvery strike is a race between two kinds of fear: theirs, of the empty city and the enemy, and yours, of hunger. *Your grain ran out before their nerve did.*"},
  BELLY:{h:'THE BELLY WINS',d:'Home with a story and nothing else',
   n:"You walk home behind Menenius Agrippa, and the Fathers welcome you at the gate. There are speeches. There is a feast.\n\nWithin a month the lenders are back in the Forum with their scales, and the workshops are full again. There is nobody to say *veto*, because there are no tribunes. There is no written law to point to, because nobody wrote anything down.\n\n*What really happened:* the plebs listened to the fable, and then they negotiated anyway. They did not go home until they had tribunes."},
  EMPTY:{h:'A PEACE WITH NO KEEPER',d:'Promises, and no one to enforce them',
-  n:"The plebs come home with some promises and no officers of their own. Within a year the old ways are back.\n\nThe lesson Rome's plebs took from this, in real history, was that gains need *someone to guard them*. That is what tribunes were: not power to command, but power to stand in the way.\n\nThe hill emptied before you had won it. Try asking for tribunes, and making them sacred."},
+  n:"The plebs come home with some promises and no officers of their own. Within a year the old ways are back.\n\nThe lesson Rome's plebs took from this, in real history, was that gains need *someone to guard them*. That is what tribunes were: not power to command, but power to stand in the way.\n\n{{ASKED_TRIBUNES?You asked for tribunes, but the Senate spent its patience on cheaper things first and refused them. Ask for less of everything else, or make the Fathers more afraid before Menenius arrives.|You never asked for tribunes. Every other gain on the list depends on someone being there to guard it.}}"},
  WAR:{h:'ROMAN AGAINST ROMAN',d:'The riots become a war',
   n:"There have been too many fires in the street. Too many broken heads. One night the patrician gangs and the plebeian crowds meet in the Forum with swords instead of sticks, and by morning there are bodies on the Sacred Way.\n\nThe Ten use it as their excuse: Rome is too dangerous for tribunes, too dangerous for appeals, too dangerous for anything but the axe.\n\n*No blood* fell too low. Rome's plebs won almost everything they ever won without a civil war. When the civil wars finally came, four hundred years later, they destroyed the Republic."},
  TEN:{h:'THE TEN REMAIN',d:'Waiting for tyrants to leave on their own',
@@ -1677,7 +1685,7 @@ const ENDINGS={
 function ending(key){
   const e=ENDINGS[key];
   LOG.push({kind:'ending',act:S.act,key,h:e.h});
-  endPaper(e.h,e.d,`**This is one of the endings.**\n\n`+e.n,AGAIN);
+  endPaper(e.h,e.d,fill(`**This is one of the endings.**\n\n`+e.n),AGAIN);
 }
 function finalEnding(){
   const F=S.flags;
